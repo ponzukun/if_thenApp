@@ -1,9 +1,15 @@
 require 'test_helper'
 
 class StandardPagesControllerTest < ActionDispatch::IntegrationTest
-  test "should get home" do
-    get standard_pages_home_url
+
+  # def setup
+  #   @base_title = "if-thenプランニング"
+  # end
+
+  test "should get root" do
+    get root_path
     assert_response :success
+    # assert_select "title", "#{@base_title}"
   end
 
 end
