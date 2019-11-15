@@ -52,6 +52,10 @@ group :development do
 end
 
 group :test do
+  gem "minitest"
+  gem "minitest-rails"
+  # capybaraで結合テストできるようにする
+  gem "minitest-rails-capybara"
   # Adds support for Capybara system testing and selenium driver
   gem 'capybara', '>= 2.15'
   gem 'selenium-webdriver'
