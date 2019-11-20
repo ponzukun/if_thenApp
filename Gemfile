@@ -55,6 +55,7 @@ group :test do
   gem 'rails-controller-testing'
   gem 'minitest'
   gem 'minitest-rails'
+  gem 'minitest-reporters'
   # capybaraで結合テストできるようにする
   gem 'minitest-rails-capybara'
   # Adds support for Capybara system testing and selenium driver
