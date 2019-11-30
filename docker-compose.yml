@@ -6,6 +6,9 @@ version: '3'
 services:
 # railsコンテナの定義（サービス名：web）
   web:
+    stdin_open: true
+    tty: true
+    # ↑Docker環境でByebugを利用するため追加
     build: .
 # ↑ .（ドット）とは、docker-compose.ymlと同じディレクトリにあるDockerfileを元にイメージを作成して使用することを意味する
 # buildとは、Dockerfileからイメージを作成すること
