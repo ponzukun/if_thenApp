@@ -3,8 +3,9 @@ require 'test_helper'
 class UsersControllerTest < ActionDispatch::IntegrationTest
 
   def setup
-    @user       = users(:michael)
-    @other_user = users(:archer)
+    @admin_user = users(:michael)
+    @user       = users(:archer)
+    @other_user = users(:lana)
   end
 
   test "should redirect index when not logged in" do
@@ -46,13 +47,13 @@ class UsersControllerTest < ActionDispatch::IntegrationTest
   end
 
   test "should not allow the admin attribute to be edited via the web" do
-    log_in_as(@other_user)
-    assert_not @other_user.admin?
-    patch user_path(@other_user), params: {
-                                    user: { password:              @other_user.password,
-                                            password_confirmation: @other_user.password,
+    log_in_as(@user)
+    assert_not @user.admin?
+    patch user_path(@user), params: {
+                                    user: { password:              @user.password,
+                                            password_confirmation: @user.password,
                                             admin: true } }
-    assert_not @other_user.reload.admin?
+    assert_not @user.reload.admin?
   end
 
   test "should redirect destroy when not logged in" do
@@ -63,10 +64,26 @@ class UsersControllerTest < ActionDispatch::IntegrationTest
   end
 
   test "should redirect destroy when logged in as a non-admin" do
-    log_in_as(@other_user)
+    log_in_as(@user)
     assert_no_difference 'User.count' do
+      delete user_path(@other_user)
+    end
+    assert_redirected_to root_url
+  end
+
+  test "should redirect destroy yourself when logged in as a non-admin" do
+    log_in_as(@user)
+    assert_difference 'User.count', -1 do
       delete user_path(@user)
     end
     assert_redirected_to root_url
+  end
+
+  test "should redirect destroy when logged in as a admin" do
+    log_in_as(@admin_user)
+    assert_difference 'User.count', -1 do
+      delete user_path(@other_user)
+    end
+    assert_redirected_to users_url
   end
 end

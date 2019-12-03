@@ -17,6 +17,10 @@
               <li>
                 <%= link_to "Log out", logout_path, method: :delete %>
               </li>
+              <li>
+                <%= link_to "Unsubscribed", user_path(current_user), method: :delete,
+                                                                     data: { confirm: "You sure?" } %>
+              </li>
             </ul>
           </li>
         <% else %>

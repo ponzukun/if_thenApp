@@ -20,7 +20,7 @@ class SiteLayoutTest < ActionDispatch::IntegrationTest
     get root_path
     assert_template 'standard_pages/home'
     assert_select "a[href=?]", users_path
-    assert_select "a[href=?]", user_path(@user)
+    assert_select "a[href=?]", user_path(@user), count: 2
     assert_select "a[href=?]", edit_user_path(@user)
     assert_select "a[href=?]", logout_path
   end
