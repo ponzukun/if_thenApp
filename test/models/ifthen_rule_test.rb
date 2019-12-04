@@ -22,8 +22,8 @@ class IfthenRuleTest < ActiveSupport::TestCase
     assert_not @ifthen.valid?
   end
 
-  test "'if' should be at most 50 characters" do
-    @ifthen.if = "a" * 51
+  test "'if' should be at most 100 characters" do
+    @ifthen.if = "a" * 101
     assert_not @ifthen.valid?
   end
 

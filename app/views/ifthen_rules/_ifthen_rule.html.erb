@@ -1,0 +1,7 @@
+<li id="ifthen_rule-<%= ifthen_rule.id %>">
+  <p class="if"><%= ifthen_rule.if %></p>
+  <p class="then"><%= ifthen_rule.then %></p>
+  <p class="timestamp">
+    Posted <%= time_ago_in_words(ifthen_rule.created_at) %> ago.
+  </p>
+</li>

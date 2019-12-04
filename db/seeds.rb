@@ -13,3 +13,10 @@ User.create!(name:  "Example User",
                password:              password,
                password_confirmation: password)
 end
+
+users = User.order(:created_at).take(6)
+50.times do
+  IF   = Faker::Lorem.sentence(1)
+  THEN = Faker::Lorem.sentence(1)
+  users.each { |user| user.ifthen_rules.create!(if: IF, then: THEN) }
+end
