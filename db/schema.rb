@@ -10,7 +10,17 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2019_12_02_063852) do
+ActiveRecord::Schema.define(version: 2019_12_04_011542) do
+
+  create_table "ifthen_rules", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
+    t.text "if"
+    t.text "then"
+    t.bigint "user_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["user_id", "created_at"], name: "index_ifthen_rules_on_user_id_and_created_at"
+    t.index ["user_id"], name: "index_ifthen_rules_on_user_id"
+  end
 
   create_table "users", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
     t.string "name"
@@ -23,4 +33,5 @@ ActiveRecord::Schema.define(version: 2019_12_02_063852) do
     t.index ["email"], name: "index_users_on_email", unique: true
   end
 
+  add_foreign_key "ifthen_rules", "users"
 end
