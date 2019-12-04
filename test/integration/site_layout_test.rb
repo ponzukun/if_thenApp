@@ -21,7 +21,7 @@ class SiteLayoutTest < ActionDispatch::IntegrationTest
     get root_path
     assert_template 'standard_pages/home'
     assert_select "a[href=?]", users_path
-    assert_select "a[href=?]", user_path(@admin), count: 3
+    assert_select "a[href=?]", user_path(@admin), count: 4
     assert_select "a[href=?]", edit_user_path(@admin)
     assert_select "a[href=?]", logout_path
   end
@@ -30,7 +30,7 @@ class SiteLayoutTest < ActionDispatch::IntegrationTest
     log_in_as(@non_admin)
     get root_path
     assert_template 'standard_pages/home'
-    assert_select "a[href=?]", user_path(@non_admin), count: 3
+    assert_select "a[href=?]", user_path(@non_admin), count: 4
     assert_select "a[href=?]", edit_user_path(@non_admin)
     assert_select "a[href=?]", logout_path
   end

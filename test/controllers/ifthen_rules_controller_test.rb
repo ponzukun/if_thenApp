@@ -1,7 +1,23 @@
 require 'test_helper'
 
 class IfthenRulesControllerTest < ActionDispatch::IntegrationTest
-  # test "the truth" do
-  #   assert true
-  # end
+
+  def setup
+    @ifthen_rule = ifthen_rules(:youtube)
+  end
+
+  test "should redirect create when not logged in" do
+    assert_no_difference 'IfthenRule.count' do
+      post ifthen_rules_path, params: { ifthen_rule: { if:   "I want to sleep again",
+                                                       then: "Hit the cheek" } }
+    end
+    assert_redirected_to login_url
+  end
+
+  test "should redirect destroy when not logged in" do
+    assert_no_difference 'IfthenRule.count' do
+      delete ifthen_rule_path(@ifthen_rule)
+    end
+    assert_redirected_to login_url
+  end
 end
