@@ -1,6 +1,9 @@
 class StandardPagesController < ApplicationController
   def home
-    @ifthen_rule = current_user.ifthen_rules.build if logged_in?
+    if logged_in?
+      @ifthen_rule = current_user.ifthen_rules.build
+      @feed_items  = current_user.ifthen_rules.paginate(page: params[:page])
+    end
   end
 
   def about
