@@ -3,5 +3,9 @@
   <p class="then"><%= ifthen_rule.then %></p>
   <p class="timestamp">
     Posted <%= time_ago_in_words(ifthen_rule.created_at) %> ago.
+    <% if current_user?(ifthen_rule.user) %>
+      <%= link_to "delete", ifthen_rule, method: :delete,
+                                         data: { confirm: "You sure?" } %>
+    <% end %>
   </p>
 </li>

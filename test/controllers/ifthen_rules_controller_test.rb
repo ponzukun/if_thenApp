@@ -20,4 +20,13 @@ class IfthenRulesControllerTest < ActionDispatch::IntegrationTest
     end
     assert_redirected_to login_url
   end
+
+  test "should redirect destroy for wrong ifthen_rule" do
+    log_in_as(users(:michael))
+    ifthen_rule = ifthen_rules(:ants)
+    assert_no_difference 'IfthenRule.count' do
+      delete ifthen_rule_path(ifthen_rule)
+    end
+    assert_redirected_to root_url
+  end
 end
