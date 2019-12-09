@@ -23,7 +23,7 @@ class IfthenRulesController < ApplicationController
   private
 
     def ifthen_rule_params
-      params.require(:ifthen_rule).permit(:if, :then)
+      params.require(:ifthen_rule).permit(:if, :then, :picture)
     end
 
     def correct_user

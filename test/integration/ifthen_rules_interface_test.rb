@@ -10,6 +10,7 @@ class IfthenRulesInterfaceTest < ActionDispatch::IntegrationTest
     log_in_as(@user)
     get root_path
     assert_select 'div.pagination'
+    assert_select 'input[type="file"]'
     # 無効な通信
     assert_no_difference 'IfthenRule.count' do
       post ifthen_rules_path, params: { ifthen_rule: { if: "", then: "" } }
@@ -18,8 +19,9 @@ class IfthenRulesInterfaceTest < ActionDispatch::IntegrationTest
     # 有効な通信
     IF   = "when I watched Youtube"
     THEN = "Meditate!"
+    picture = fixture_file_upload('test/fixtures/rails.png', 'image/png')
     assert_difference 'IfthenRule.count', 1 do
-      post ifthen_rules_path, params: { ifthen_rule: { if: IF, then: THEN } }
+      post ifthen_rules_path, params: { ifthen_rule: { if: IF, then: THEN, picture: picture } }
     end
     assert_redirected_to root_url
     follow_redirect!

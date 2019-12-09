@@ -33,6 +33,9 @@ gem 'faker',          '1.7.3'
 # paginate method for rails
 gem 'will_paginate',           '3.1.7'
 gem 'bootstrap-will_paginate', '1.0.0'
+# upload image
+gem 'carrierwave',             '1.2.2'
+gem 'mini_magick',             '4.7.0'
 # Use ActiveStorage variant
 # gem 'mini_magick', '~> 4.8'
 
@@ -70,6 +73,10 @@ group :test do
   # gem 'chromedriver-helper'
   gem 'guard'
   gem 'guard-minitest'
+end
+
+group :production do
+  gem 'fog', '1.42'
 end
 
 # Windows does not include zoneinfo files, so bundle the tzinfo-data gem
