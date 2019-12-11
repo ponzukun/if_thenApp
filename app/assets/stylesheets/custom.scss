@@ -165,3 +165,52 @@ input {
     border-bottom: 1px solid $gray-lighter;
   }
 }
+
+/* ifthen_rules */
+
+.ifthen_rules {
+  list-style: none;
+  padding: 0;
+  li {
+    padding: 10px 0;
+    border-top: 1px solid #e8e8e8;
+  }
+  .if {
+    display: block;
+    margin-left: 60px;
+    font-size: 1.6em;
+    img {
+      display: block;
+      padding: 5px 0;
+    }
+  }
+  .then {
+    display: block;
+    margin-left: 60px;
+    font-size: 1.6em;
+    img {
+      display: block;
+      padding: 5px 0;
+    }
+  }
+  .timestamp {
+    color: $gray-light;
+    display: block;
+    margin-left: 60px;
+    font-size: 1.1em
+  }
+}
+
+aside {
+  textarea {
+    height: 100px;
+    margin-bottom: 5px;
+  }
+}
+
+p.picture {
+  margin-top: 10px;
+  input {
+    border: 0;
+  }
+}

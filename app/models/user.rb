@@ -1,4 +1,5 @@
 class User < ApplicationRecord
+  has_many :ifthen_rules, dependent: :destroy
   attr_accessor :remember_token
   before_save { email.downcase! }
   # before_save { self.email = email.downcase }
@@ -43,4 +44,10 @@ class User < ApplicationRecord
   def forget
     update_attribute(:remember_digest, nil)
   end
+
+  # 試作feedの定義（今の所必要ないが一応残す）
+  # def feed
+  #   IfthenRule.where("user_id = ?", id)
+  #   ↑は、ifthen_rulesと本質的に同等
+  # end
 end

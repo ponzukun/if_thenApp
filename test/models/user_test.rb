@@ -72,4 +72,12 @@ class UserTest < ActiveSupport::TestCase
     @user.password = @user.password_confirmation = "a" * 5
     assert_not @user.valid?
   end
+
+  test "associated ifthen_rules should be destroyed" do
+    @user.save
+    @user.ifthen_rules.create!(if: "I want to watch Youtube", then: "Meditate!")
+    assert_difference 'IfthenRule.count', -1 do
+      @user.destroy
+    end
+  end
 end

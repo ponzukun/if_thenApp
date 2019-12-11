@@ -9,7 +9,7 @@ class UsersController < ApplicationController
   end
 
   def show
-    # @user = User.find(params[:id])
+    @ifthen_rules = @user.ifthen_rules.paginate(page: params[:page], per_page: 15)
   end
 
   def new
@@ -29,11 +29,9 @@ class UsersController < ApplicationController
   end
 
   def edit
-    # @user = User.find(params[:id])
   end
 
   def update
-    # @user = User.find(params[:id])
     if @user.update_attributes(user_params)
       flash[:success] = "Profile updated"
       redirect_to @user
@@ -43,7 +41,6 @@ class UsersController < ApplicationController
   end
 
   def destroy
-    # @user = User.find(params[:id])
     if current_user.admin?
       @user.destroy
       flash[:success] = "User deleted"
@@ -68,24 +65,13 @@ class UsersController < ApplicationController
       @user = User.find(params[:id])
     end
 
-    # ログイン済みユーザーかどうか確認
-    def logged_in_user
-      unless logged_in?
-        store_location
-        flash[:danger] = "Please log in."
-        redirect_to login_url
-      end
-    end
-
     # 正しいユーザーかどうか確認
     def correct_user
-      # @user = User.find(params[:id])
       redirect_to(root_url) unless current_user?(@user)
     end
 
     # destoryアクションが許可されたユーザーかどうか確認
     def allowed_user_destory
-      # @user = User.find(params[:id])
       redirect_to(root_url) unless current_user.admin? || current_user?(@user)
     end
 end
