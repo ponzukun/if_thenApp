@@ -7,6 +7,14 @@ class IfthenRule < ApplicationRecord
   validates :then, presence: true, length: { maximum: 100 }
   validate  :picture_size
 
+  def self.search(search)
+    if search
+      where(['`if` LIKE ?', "%#{search}%"])
+    else
+      all
+    end
+  end
+
   private
 
     # アップロードされた画像のサイズをバリデーションする

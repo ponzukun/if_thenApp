@@ -1,26 +1,5 @@
 <% if logged_in? %>
-  <div class="row">
-    <aside class="col-md-4">
-      <section class="user_info">
-        <%= render 'shared/user_info' %>
-      </section>
-      <section class="ifthen_rule_form">
-        <%= render 'shared/ifthen_rule_form' %>
-      </section>
-    </aside>
-    <div class="col-md-8">
-      <h3>IfthenRule Feed</h3>
-      <%= render 'shared/feed' %>
-    </div>
-  </div>
+  <%= render 'standard_pages/user_logged_in' %>
 <% else %>
-  <div class="center jumbotron">
-    <h1>Welcome to the If-Then App</h1>
-
-    <h2>
-      This is the home page for the if-then plannning suport application.
-    </h2>
-
-    <%= link_to "Sign up now!", signup_path, class: "btn btn-lg btn-primary" %>
-  </div>
+  <%= render 'standard_pages/user_not_logged_in' %>
 <% end %>

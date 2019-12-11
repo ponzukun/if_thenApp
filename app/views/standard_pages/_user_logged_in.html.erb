@@ -1,0 +1,14 @@
+<div class="row">
+  <aside class="col-md-4">
+    <section class="user_info">
+      <%= render 'shared/user_info' %>
+    </section>
+    <section class="ifthen_rule_form">
+      <%= render 'shared/ifthen_rule_form' %>
+    </section>
+  </aside>
+  <div class="col-md-8">
+    <h3>IfthenRule Feed(<%= current_user.ifthen_rules.count %>)</h3>
+    <%= render 'shared/feed' %>
+  </div>
+</div>

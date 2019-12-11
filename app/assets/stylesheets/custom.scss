@@ -116,6 +116,8 @@ footer {
 
 input, textarea, select, .uneditable-input {
   border: 1px solid #bbb;
+  border-radius: 10px;
+  padding: 5px 10px;
   width: 100%;
   margin-bottom: 15px;
   @include box_sizing;
@@ -175,10 +177,18 @@ input {
     padding: 10px 0;
     border-top: 1px solid #e8e8e8;
   }
+  label {
+    font-size: 3rem;
+    font-weight: normal;
+    margin-left: 60px;
+  }
   .if {
     display: block;
     margin-left: 60px;
+    padding: 5px 10px;
     font-size: 1.6em;
+    border: 1px solid #c7c5c5;
+    border-radius: 10px;
     img {
       display: block;
       padding: 5px 0;
@@ -187,7 +197,10 @@ input {
   .then {
     display: block;
     margin-left: 60px;
+    padding: 5px 10px;
     font-size: 1.6em;
+    border: 1px solid #c7c5c5;
+    border-radius: 10px;
     img {
       display: block;
       padding: 5px 0;
@@ -206,6 +219,10 @@ aside {
     height: 100px;
     margin-bottom: 5px;
   }
+  label {
+  font-size: 3.5rem;
+  font-weight: normal;
+}
 }
 
 p.picture {
