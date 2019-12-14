@@ -3,13 +3,13 @@ class IfthenRule < ApplicationRecord
   default_scope -> { order(created_at: :desc) }
   mount_uploader :picture, PictureUploader
   validates :user_id, presence: true
-  validates :if, presence: true, length: { maximum: 100 }
-  validates :then, presence: true, length: { maximum: 100 }
+  validates :if_content, presence: true, length: { maximum: 100 }
+  validates :then_content, presence: true, length: { maximum: 100 }
   validate  :picture_size
 
   def self.search(search)
     if search
-      where(['`if` LIKE ?', "%#{search}%"])
+      where(['if_content LIKE ?', "%#{search}%"])
     else
       all
     end

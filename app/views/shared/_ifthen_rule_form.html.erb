@@ -2,9 +2,9 @@
   <%= render 'shared/error_messages', object: f.object %>
   <div class="field">
     <label>if</label>
-    <%= f.text_area :if %>
+    <%= f.text_area :if_content %>
     <label>then</label>
-    <%= f.text_area :then %>
+    <%= f.text_area :then_content %>
   </div>
   <%= f.submit "Post", class: "btn btn-primary"%>
   <span class="picture">

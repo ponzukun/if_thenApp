@@ -1,55 +1,55 @@
 youtube:
-  if:         "I want to watch Youtube"
-  then:       "Meditate!"
-  created_at: <%= 10.minutes.ago %>
-  user:       michael
+  if_content:   "I want to watch Youtube"
+  then_content: "Meditate!"
+  created_at:   <%= 10.minutes.ago %>
+  user:         michael
 
 tau_manifesto:
-  if:         "I want to eat snuck"
-  then:       "Check out the @tauday site by @mhartl: http://tauday.com"
-  created_at: <%= 3.years.ago %>
-  user:       michael
+  if_content:   "I want to eat snuck"
+  then_content: "Check out the @tauday site by @mhartl: http://tauday.com"
+  created_at:   <%= 3.years.ago %>
+  user:         michael
 
 lazy_jump:
-  if:         "I want to be lazy"
-  then:       "Jump 10 times!"
-  created_at: <%= 2.hours.ago %>
-  user:       michael
+  if_content:   "I want to be lazy"
+  then_content: "Jump 10 times!"
+  created_at:   <%= 2.hours.ago %>
+  user:         michael
 
 most_recent:
-  if:         "I get up in the morning"
-  then:       "Make bed!"
-  created_at: <%= Time.zone.now %>
-  user:       michael
+  if_content:   "I get up in the morning"
+  then_content: "Make bed!"
+  created_at:   <%= Time.zone.now %>
+  user:         michael
 
 <% 30.times do |n| %>
 ifthen_rule_<%= n %>:
-  if:         <%= Faker::Lorem.sentence(1) %>
-  then:       <%= Faker::Lorem.sentence(1) %>
-  created_at: <%= 42.days.ago %>
-  user:       michael
+  if_content:   <%= Faker::Lorem.sentence(1) %>
+  then_content: <%= Faker::Lorem.sentence(1) %>
+  created_at:   <%= 42.days.ago %>
+  user:         michael
 <% end %>
 
 ants:
-  if:         "I want to watch Youtube"
-  then:       "Meditate!"
-  created_at: <%= 2.years.ago %>
-  user: archer
+  if_content:   "I want to watch Youtube"
+  then_content: "Meditate!"
+  created_at:   <%= 2.years.ago %>
+  user:         archer
 
 zone:
-  if:         "I want to eat snuck"
-  then:       "Check out the @tauday site by @mhartl: http://tauday.com"
-  created_at: <%= 3.days.ago %>
-  user: archer
+  if_content:   "I want to eat snuck"
+  then_content: "Check out the @tauday site by @mhartl: http://tauday.com"
+  created_at:   <%= 3.days.ago %>
+  user:         archer
 
 tone:
-  if:         "I want to be lazy"
-  then:       "Jump 10 times!"
-  created_at: <%= 10.minutes.ago %>
-  user: lana
+  if_content:   "I want to be lazy"
+  then_content: "Jump 10 times!"
+  created_at:   <%= 10.minutes.ago %>
+  user:         lana
 
 van:
-  if:         "I get up in the morning"
-  then:       "Make bed!"
-  created_at: <%= 4.hours.ago %>
-  user: lana
+  if_content:   "I get up in the morning"
+  then_content: "Make bed!"
+  created_at:   <%= 4.hours.ago %>
+  user:         lana

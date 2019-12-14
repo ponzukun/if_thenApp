@@ -3,8 +3,8 @@
     <%= link_to "if-then app", root_path, id: "logo" %>
     <nav>
       <ul class="nav navbar-nav navbar-right">
+        <li><%= link_to "Home",   root_path %></li>
         <% if logged_in? %>
-          <li><%= link_to "New",   root_path %></li>
           <% if current_user.admin? %>
           <li><%= link_to "Users", users_path %></li>
           <% end %>
@@ -27,7 +27,6 @@
             </ul>
           </li>
         <% else %>
-          <li><%= link_to "Home",   root_path %></li>
           <li><%= link_to "Log in", login_path %></li>
         <% end %>
       </ul>

@@ -1,9 +1,9 @@
 <li id="ifthen_rule-<%= ifthen_rule.id %>">
   <label>if</label>
-  <p class="if"><%= ifthen_rule.if %></p>
+  <p class="if"><%= ifthen_rule.if_content %></p>
   <label>then</label>
   <p class="then">
-    <%= ifthen_rule.then %>
+    <%= ifthen_rule.then_content %>
     <%= image_tag ifthen_rule.picture.url if ifthen_rule.picture? %>
   </p>
   <p class="timestamp">

@@ -13,20 +13,22 @@ class IfthenRulesInterfaceTest < ActionDispatch::IntegrationTest
     assert_select 'input[type="file"]'
     # 無効な通信
     assert_no_difference 'IfthenRule.count' do
-      post ifthen_rules_path, params: { ifthen_rule: { if: "", then: "" } }
+      post ifthen_rules_path, params: { ifthen_rule: { if_content: "", then_content: "" } }
     end
     assert_select 'div#error_explanation'
     # 有効な通信
-    IF   = "when I watched Youtube"
-    THEN = "Meditate!"
+    if_content   = "when I watched Youtube"
+    then_content = "Meditate!"
     picture = fixture_file_upload('test/fixtures/rails.png', 'image/png')
     assert_difference 'IfthenRule.count', 1 do
-      post ifthen_rules_path, params: { ifthen_rule: { if: IF, then: THEN, picture: picture } }
+      post ifthen_rules_path, params: { ifthen_rule: { if_content: if_content,
+                                                       then_content: then_content,
+                                                       picture: picture } }
     end
     assert_redirected_to root_url
     follow_redirect!
-    assert_match IF,   response.body
-    assert_match THEN, response.body
+    assert_match if_content,   response.body
+    assert_match then_content, response.body
     # 投稿を削除する
     assert_select 'a', text: 'delete'
     first_ifthen_rule = @user.ifthen_rules.paginate(page: 1).first
