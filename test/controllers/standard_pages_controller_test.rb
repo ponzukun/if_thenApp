@@ -4,6 +4,7 @@ class StandardPagesControllerTest < ActionDispatch::IntegrationTest
 
   def setup
     @base_title = "If-Then App"
+    @user = users(:michael)
   end
 
   test "should get root" do
@@ -22,6 +23,13 @@ class StandardPagesControllerTest < ActionDispatch::IntegrationTest
     get contact_path
     assert_response :success
     assert_select "title", "Contact | #{@base_title}"
+  end
+
+  test "should get new" do
+    log_in_as(@user)
+    get new_path
+    assert_response :success
+    assert_select "title", "New | #{@base_title}"
   end
 
 end

@@ -4,11 +4,12 @@ class IfthenRulesInterfaceTest < ActionDispatch::IntegrationTest
 
   def setup
     @user = users(:michael)
+    @ifthen_rule = (:youtube)
   end
 
   test "ifthen_rule interface" do
     log_in_as(@user)
-    get root_path
+    get new_path
     assert_select 'div.pagination'
     assert_select 'input[type="file"]'
     # 無効な通信
@@ -25,10 +26,22 @@ class IfthenRulesInterfaceTest < ActionDispatch::IntegrationTest
                                                        then_content: then_content,
                                                        picture: picture } }
     end
-    assert_redirected_to root_url
+    assert_redirected_to new_url
     follow_redirect!
     assert_match if_content,   response.body
     assert_match then_content, response.body
+    # 投稿を更新する
+    assert_no_difference 'IfthenRule.count' do
+      patch ifthen_rule_path(@ifthen_rule), params: { ifthen_rule: { if_content: "", then_content: "" } }
+    end
+    # assert_select 'div#error_explanation'
+    if_content   = "when I watched Amazon Primevideos"
+    then_content = "Jump 10times!"
+    assert_select 'a', text: 'update'
+    assert_no_difference 'IfthenRule.count' do
+      patch ifthen_rule_path(@ifthen_rule), params: { ifthen_rule: { if_content: if_content,
+                                                                     then_content: then_content } }
+    end
     # 投稿を削除する
     assert_select 'a', text: 'delete'
     first_ifthen_rule = @user.ifthen_rules.paginate(page: 1).first
