@@ -4,7 +4,6 @@ class IfthenRulesInterfaceTest < ActionDispatch::IntegrationTest
 
   def setup
     @user = users(:michael)
-    @ifthen_rule = (:youtube)
   end
 
   test "ifthen_rule interface" do
@@ -30,18 +29,6 @@ class IfthenRulesInterfaceTest < ActionDispatch::IntegrationTest
     follow_redirect!
     assert_match if_content,   response.body
     assert_match then_content, response.body
-    # 投稿を更新する
-    assert_no_difference 'IfthenRule.count' do
-      patch ifthen_rule_path(@ifthen_rule), params: { ifthen_rule: { if_content: "", then_content: "" } }
-    end
-    # assert_select 'div#error_explanation'
-    if_content   = "when I watched Amazon Primevideos"
-    then_content = "Jump 10times!"
-    assert_select 'a', text: 'update'
-    assert_no_difference 'IfthenRule.count' do
-      patch ifthen_rule_path(@ifthen_rule), params: { ifthen_rule: { if_content: if_content,
-                                                                     then_content: then_content } }
-    end
     # 投稿を削除する
     assert_select 'a', text: 'delete'
     first_ifthen_rule = @user.ifthen_rules.paginate(page: 1).first
