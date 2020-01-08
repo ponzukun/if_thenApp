@@ -16,7 +16,7 @@ end
 
 users = User.order(:created_at).take(6)
 50.times do
-  IF   = Faker::Lorem.sentence(1)
-  THEN = Faker::Lorem.sentence(1)
-  users.each { |user| user.ifthen_rules.create!(if: IF, then: THEN) }
+  if_content   = Faker::Lorem.sentence(1)
+  then_content = Faker::Lorem.sentence(1)
+  users.each { |user| user.ifthen_rules.create!(if_content: if_content, then_content: then_content) }
 end
