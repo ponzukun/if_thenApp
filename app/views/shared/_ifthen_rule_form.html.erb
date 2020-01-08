@@ -1,8 +1,10 @@
 <%= form_for(@ifthen_rule) do |f| %>
   <%= render 'shared/error_messages', object: f.object %>
   <div class="field">
-    <%= f.text_area :if, placeholder: "Compose new if-rule..."%>
-    <%= f.text_area :then, placeholder: "Compose new then-rule..."%>
+    <%= f.label :if_content, "if" %>
+    <%= f.text_area :if_content, class: 'form-control' %>
+    <%= f.label :then_content, "then" %>
+    <%= f.text_area :then_content, class: 'form-control' %>
   </div>
   <%= f.submit "Post", class: "btn btn-primary"%>
   <span class="picture">

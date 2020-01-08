@@ -8,8 +8,8 @@ class IfthenRulesControllerTest < ActionDispatch::IntegrationTest
 
   test "should redirect create when not logged in" do
     assert_no_difference 'IfthenRule.count' do
-      post ifthen_rules_path, params: { ifthen_rule: { if:   "I want to sleep again",
-                                                       then: "Hit the cheek" } }
+      post ifthen_rules_path, params: { ifthen_rule: { if_content:   "I want to sleep again",
+                                                       then_content: "Hit the cheek" } }
     end
     assert_redirected_to login_url
   end

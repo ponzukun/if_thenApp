@@ -6,10 +6,10 @@ class IfthenRulesController < ApplicationController
     @ifthen_rule = current_user.ifthen_rules.build(ifthen_rule_params)
     if @ifthen_rule.save
       flash[:success] = "IfthenRule created!"
-      redirect_to root_url
+      redirect_to new_url
     else
       @feed_items = []
-      render 'standard_pages/home'
+      render 'standard_pages/new'
     end
   end
 
@@ -23,7 +23,7 @@ class IfthenRulesController < ApplicationController
   private
 
     def ifthen_rule_params
-      params.require(:ifthen_rule).permit(:if, :then, :picture)
+      params.require(:ifthen_rule).permit(:if_content, :then_content, :picture)
     end
 
     def correct_user

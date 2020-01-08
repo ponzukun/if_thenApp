@@ -1,15 +1,18 @@
 <% provide(:title, @user.name) %>
+<% provide(:path,  user_path) %>
 <div class="row">
   <aside class="col-md-4">
     <section class="user_info">
-      <h1>
-        <%= @user.name %>
-      </h1>
+      <h1><%= @user.name %></h1>
     </section>
   </aside>
   <div class="col-md-8">
     <% if @user.ifthen_rules.any? %>
       <h3>If-Then Rules (<%= @user.ifthen_rules.count %>)</h3>
+
+      <!-- 検索機能 -->
+      <%= render 'shared/search' %>
+
       <ol class="ifthen_rules">
         <%= render @ifthen_rules %>
       </ol>

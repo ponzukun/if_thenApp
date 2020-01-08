@@ -50,4 +50,12 @@ class User < ApplicationRecord
   #   IfthenRule.where("user_id = ?", id)
   #   ↑は、ifthen_rulesと本質的に同等
   # end
+
+  def self.search(search)
+    if search
+      where(['name LIKE ?', "%#{search}%"])
+    else
+      all
+    end
+  end
 end

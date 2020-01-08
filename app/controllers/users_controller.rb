@@ -5,11 +5,11 @@ class UsersController < ApplicationController
   before_action :allowed_user_destory,  only: :destroy
 
   def index
-    @users = User.paginate(page: params[:page])
+    @users = User.paginate(page: params[:page]).search(params[:search])
   end
 
   def show
-    @ifthen_rules = @user.ifthen_rules.paginate(page: params[:page], per_page: 15)
+    @ifthen_rules = @user.ifthen_rules.paginate(page: params[:page], per_page: 15).search(params[:search])
   end
 
   def new
@@ -20,7 +20,7 @@ class UsersController < ApplicationController
     @user = User.new(user_params)
     if @user.save
       log_in @user
-      flash[:success] = "Welcome to the Sample App!"
+      flash[:success] = "Welcome to the ifthen App!"
       redirect_to @user
       # ↑は、redirect_to user_url(@user) と等価
     else

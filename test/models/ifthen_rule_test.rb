@@ -5,7 +5,7 @@ class IfthenRuleTest < ActiveSupport::TestCase
   def setup
     @user = users(:michael)
     # 紐付いているユーザーを通して、作成（buildはオブジェクトを返すがDBに反映されない）
-    @ifthen = @user.ifthen_rules.build(if: "When I watch Youtube", then: "Meditate!")
+    @ifthen = @user.ifthen_rules.build(if_content: "When I watch Youtube", then_content: "Meditate!")
   end
 
   test "should be valid" do
@@ -18,22 +18,22 @@ class IfthenRuleTest < ActiveSupport::TestCase
   end
 
   test "'if' should be present" do
-    @ifthen.if = "   "
+    @ifthen.if_content = "   "
     assert_not @ifthen.valid?
   end
 
   test "'if' should be at most 100 characters" do
-    @ifthen.if = "a" * 101
+    @ifthen.if_content = "a" * 101
     assert_not @ifthen.valid?
   end
 
   test "'then' should be present" do
-    @ifthen.then = "   "
+    @ifthen.then_content = "   "
     assert_not @ifthen.valid?
   end
 
   test "'then' should be at most 100 characters" do
-    @ifthen.then = "a" * 101
+    @ifthen.then_content = "a" * 101
     assert_not @ifthen.valid?
   end
 

@@ -1,0 +1,4 @@
+<%= form_tag(yield(:path), :method => 'get') do %>
+  <%= text_field_tag :listen, params[:listen] %>
+  <%= submit_tag 'Listen', :name => nil %>
+<% end %>

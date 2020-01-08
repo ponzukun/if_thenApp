@@ -75,7 +75,7 @@ class UserTest < ActiveSupport::TestCase
 
   test "associated ifthen_rules should be destroyed" do
     @user.save
-    @user.ifthen_rules.create!(if: "I want to watch Youtube", then: "Meditate!")
+    @user.ifthen_rules.create!(if_content: "I want to watch Youtube", then_content: "Meditate!")
     assert_difference 'IfthenRule.count', -1 do
       @user.destroy
     end
